@@ -1,0 +1,28 @@
+
+services:
+  financebot:
+    container_name: financebot
+    image: nikitaborovikov23/financebot
+    depends_on:
+      - postgres
+    environment:
+      - TOKEN=6793126568:AAG99TSvIh40l-0rORlpnS_ZX02uLRWlrEs
+  postgres:
+    container_name: postgres
+    image: nikitaborovikov23/postgres1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=23112005
+    volumes:
+      - '/root:/fin:rw'
+  pgadmin:
+    container_name: pgadmin
+    image: nikitaborovikov23/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=nikitaborovikov23@yandex.ru
+      - PGADMIN_DEFAULT_PASSWORD=23112005
+    ports:
+      - "5050:80"
